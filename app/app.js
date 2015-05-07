@@ -1,15 +1,27 @@
 'use strict';
 
-let app = angular.module('myApp', ['ngRoute', 'rmMeetup','door3.css']);
+import spentController from "spent/controllers/spentController";
 
-app.config(
-    [
-        'rmConsumerProvider',
-        (rmConsumerProvider) => {
-            rmConsumerProvider.setKey('1h82intl8imm92ivovvphp0f9c');
-            rmConsumerProvider.setRedirectURI('http://localhost:8080');
-        }
-    ]
-);
+let app = angular.module('myApp', ['ngRoute']);
+
+app.config([
+  '$routeProvider',
+  '$locationProvider',
+  ($routeProvider, $locationProvider) => {
+      $routeProvider.
+        when('/spent', {
+            templateUrl: 'app/spent/templates/spent.html',
+            controller: spentController
+        }).
+        otherwise({
+            templateUrl: 'app/spent/templates/spent.html',
+            controller: spentController
+        });
+        /*$locationProvider.html5Mode({
+          enabled: true,
+          requireBase: false
+        });*/
+    }
+]);
 
 return app;
