@@ -4,17 +4,17 @@
     <form id="spending">
         <div class="form-group">
         <label for="dateSpending">Date</label>
-        <input type="date" class="form-control" id="dateSpending" placeholder="Enter date" />
+        <input type="date" class="form-control" id="dateSpending" placeholder="Enter date" data-ng:model="date" />
         </div>
         <div class="form-group">
         <label for="item">Where</label>
-        <input type="text" class="form-control" id="item" placeholder="Enter where you spent" />
+        <input type="text" class="form-control" id="item" placeholder="Enter where you spent" data-ng:model="item" />
         </div>
         <div class="form-group">
         <label for="value">Value</label>
-        <input type="number" id="value" />
+        <input type="number" id="value" data-ng:model="value" />
         </div>
-        <button id="send" type="submit" class="btn btn-default">Submit</button>
+        <button id="send" type="submit" class="btn btn-default" data-ng:click="saveSpent()">Submit</button>
     </form>
     </div>
 </div>
