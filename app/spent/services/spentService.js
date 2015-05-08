@@ -1,16 +1,11 @@
-﻿var spentService = () => {
-    
+﻿class SpentService {
 
-    return {
+    constructor(){
+    }
 
-        name: 'spentService',
-        post: (date, item, value) => {
-            console.log('Spent save.');
-        }
+    post(date, item, value){
+        console.log('Spent save.');
+    }
+}
 
-    };
-};
-
-//spentController.$inject = ['$scope'];
-
-export default spentService;
+export { SpentService };

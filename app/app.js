@@ -1,6 +1,6 @@
 'use strict';
 
-import spentService from "spent/services/spentService";
+import { SpentService } from "spent/services/spentService";
 import { SpentController } from "spent/controllers/spentController";
 
 let app = angular.module('myApp', ['ngRoute']);
@@ -27,6 +27,6 @@ app.config([
     }
 ]);
 
-app.factory('spentService', spentService);
+app.service('spentService', SpentService);
 
 return app;

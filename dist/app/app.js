@@ -1,10 +1,7 @@
 define(["exports", "spent/services/spentService", "spent/controllers/spentController"], function (exports, _spentServicesSpentService, _spentControllersSpentController) {
     "use strict";
 
-    var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-    var spentService = _interopRequire(_spentServicesSpentService);
-
+    var SpentService = _spentServicesSpentService.SpentService;
     var SpentController = _spentControllersSpentController.SpentController;
 
     var app = angular.module("myApp", ["ngRoute"]);
@@ -25,7 +22,7 @@ define(["exports", "spent/services/spentService", "spent/controllers/spentContro
         });*/
     }]);
 
-    app.factory("spentService", spentService);
+    app.service("spentService", SpentService);
 
     return app;
 });
