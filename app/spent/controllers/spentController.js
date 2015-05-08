@@ -1,13 +1,16 @@
-﻿var spentController = ($scope, spentService) => {
-    $scope.date = '';
-    $scope.item = '';
-    $scope.value = '';
+﻿class SpentController {
+    constructor(spentService){
+        this._service = spentService;
+        this.date = '';
+        this.item = '';
+        this.value = '';
+    }
 
-    $scope.saveSpent = () => {
-        spentService.post($scope.date, $scope.item, $scope.value);
-    };
-};
+    saveSpent(){
+        this._service.post(this.date, this.item, this.value);
+    }
+}
 
-spentController.$inject = ['$scope', 'spentService'];
+SpentController.$inject = ['spentService'];
 
-export default spentController;
+export { SpentController };
