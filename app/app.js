@@ -1,5 +1,8 @@
+/*jslint browser:true */
 'use strict';
 
+import angular from 'angular';
+import ngRoute from 'angular-route';
 import { SpentService } from "spent/services/spentService";
 import { SpentController } from "spent/controllers/spentController";
 
@@ -24,9 +27,11 @@ app.config([
           enabled: true,
           requireBase: false
         });*/
-    }
+   }
 ]);
 
 app.service('spentService', SpentService);
+
+angular.bootstrap(document, ['myApp']);
 
 return app;

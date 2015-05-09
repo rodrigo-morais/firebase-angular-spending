@@ -1,5 +1,15 @@
 module.exports = function (grunt) {
+    // Config variables
+    var configVars = {
+        "build": "build",
+        "dist_www": "../gh-pages",
+        "dist_bower": "../bower-repo",
+        "www_port": "9768",
+        "www_server": "localhost"
+    };
+
     grunt.initConfig({
+        cvars: configVars,
         jshint: {
             options: {
                 strict: false,
@@ -100,5 +110,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-open');
     grunt.registerTask('default', ['jshint', 'karma', 'clean', 'babel', 'copy']);
 };
