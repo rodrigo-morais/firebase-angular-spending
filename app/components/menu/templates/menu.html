@@ -1,0 +1,18 @@
+<div class="menu">
+    <div class="title">
+        Features
+    </div>
+    <ul>
+        <li
+            data-ng:repeat="menu in menus"
+            data-ng:click="select(menu)"
+        >
+            <a
+                href="{{ menu.link }}"
+                data-ng:class="{'selected': menu.selected}"
+            >
+                {{ menu.text }}
+            </a>
+        </li>
+    </ul>
+</div>

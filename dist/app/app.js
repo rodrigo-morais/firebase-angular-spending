@@ -1,4 +1,4 @@
-define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angularfire"], function (exports, _angular, _angularRoute, _angularAMD, _firebase, _angularfire) {
+define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angularfire", "components/menu/directives/rmMenuDirective", "angularCSS"], function (exports, _angular, _angularRoute, _angularAMD, _firebase, _angularfire, _componentsMenuDirectivesRmMenuDirective, _angularCSS) {
     /*jslint browser:true */
     "use strict";
 
@@ -14,7 +14,11 @@ define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angula
 
     var angularfire = _interopRequire(_angularfire);
 
-    var app = angular.module("myApp", ["ngRoute", "firebase"]);
+    var rmMenuDirective = _interopRequire(_componentsMenuDirectivesRmMenuDirective);
+
+    var angularCss = _interopRequire(_angularCSS);
+
+    var app = angular.module("myApp", ["ngRoute", "firebase", "door3.css"]);
 
     app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
         $routeProvider.when("/spent", angularAMD.route({
@@ -33,6 +37,8 @@ define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angula
             requireBase: false
         });*/
     }]);
+
+    app.directive("rmMenu", [rmMenuDirective]);
 
     return angularAMD.bootstrap(app);
 });

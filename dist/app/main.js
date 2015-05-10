@@ -8,7 +8,7 @@ requirejs.config({
         'angular-resource': '../vendor/angular-resource/angular-resource',
         'angular-route': '../vendor/angular-route/angular-route',
         'angularAMD': '../vendor/angularAMD/angularAMD',
-        'angular-css': '../vendor/angular-css/angular-css',
+        'angularCSS': '../vendor/angular-css/angular-css',
         'bootstrap': '../vendor/bootstrap/dist/js/bootstrap.min',
         'firebase': '../vendor/firebase/firebase',
         'angularfire': '../vendor/angularfire/dist/angularfire.min',
@@ -21,6 +21,10 @@ requirejs.config({
         },
         'angular-route': {
             exports: "angular-route",
+            deps: ["angular"]
+        },
+        'angularCSS': {
+            exports: "angularCSS",
             deps: ["angular"]
         },
         'angularAMD': ['angular'],
