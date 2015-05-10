@@ -26,6 +26,16 @@ define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angula
             controller: "spentController",
             controllerUrl: "spent/controllers/spentController",
             controllerAs: "vm"
+        })).when("/daily", angularAMD.route({
+            templateUrl: "app/daily/templates/daily.html",
+            controller: "dailyController",
+            controllerUrl: "daily/controllers/dailyController",
+            controllerAs: "vm"
+        })).when("/monthly", angularAMD.route({
+            templateUrl: "app/monthly/templates/monthly.html",
+            controller: "monthlyController",
+            controllerUrl: "monthly/controllers/monthlyController",
+            controllerAs: "vm"
         })).otherwise(angularAMD.route({
             templateUrl: "app/spent/templates/spent.html",
             controller: "spentController",
