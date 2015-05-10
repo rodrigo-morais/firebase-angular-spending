@@ -3,35 +3,32 @@
 
 import angular from 'angular';
 import ngRoute from 'angular-route';
-import { SpentService } from "spent/services/spentService";
-import { SpentController } from "spent/controllers/spentController";
+import angularAMD from 'angularAMD';
 
-let app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute']);
 
 app.config([
   '$routeProvider',
   '$locationProvider',
   ($routeProvider, $locationProvider) => {
-      $routeProvider.
-        when('/spent', {
+    $routeProvider.
+        when('/spent',  angularAMD.route({
             templateUrl: 'app/spent/templates/spent.html',
-            controller: SpentController,
+            controller: 'spentController',
+            controllerUrl: 'spent/controllers/spentController',
             controllerAs: 'vm'
-        }).
-        otherwise({
+        })).
+        otherwise(angularAMD.route({
             templateUrl: 'app/spent/templates/spent.html',
-            controller: SpentController,
+            controller: 'spentController',
+            controllerUrl: 'spent/controllers/spentController',
             controllerAs: 'vm'
-        });
+        }));
         /*$locationProvider.html5Mode({
-          enabled: true,
-          requireBase: false
+            enabled: true,
+            requireBase: false
         });*/
    }
 ]);
 
-app.service('spentService', SpentService);
-
-angular.bootstrap(document, ['myApp']);
-
-return app;
+return angularAMD.bootstrap(app);

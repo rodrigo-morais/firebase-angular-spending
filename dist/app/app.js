@@ -1,4 +1,4 @@
-define(["exports", "angular", "angular-route", "spent/services/spentService", "spent/controllers/spentController"], function (exports, _angular, _angularRoute, _spentServicesSpentService, _spentControllersSpentController) {
+define(["exports", "angular", "angular-route", "angularAMD"], function (exports, _angular, _angularRoute, _angularAMD) {
     /*jslint browser:true */
     "use strict";
 
@@ -8,30 +8,27 @@ define(["exports", "angular", "angular-route", "spent/services/spentService", "s
 
     var ngRoute = _interopRequire(_angularRoute);
 
-    var SpentService = _spentServicesSpentService.SpentService;
-    var SpentController = _spentControllersSpentController.SpentController;
+    var angularAMD = _interopRequire(_angularAMD);
 
     var app = angular.module("myApp", ["ngRoute"]);
 
     app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
-        $routeProvider.when("/spent", {
+        $routeProvider.when("/spent", angularAMD.route({
             templateUrl: "app/spent/templates/spent.html",
-            controller: SpentController,
+            controller: "spentController",
+            controllerUrl: "spent/controllers/spentController",
             controllerAs: "vm"
-        }).otherwise({
+        })).otherwise(angularAMD.route({
             templateUrl: "app/spent/templates/spent.html",
-            controller: SpentController,
+            controller: "spentController",
+            controllerUrl: "spent/controllers/spentController",
             controllerAs: "vm"
-        });
+        }));
         /*$locationProvider.html5Mode({
-          enabled: true,
-          requireBase: false
+            enabled: true,
+            requireBase: false
         });*/
     }]);
 
-    app.service("spentService", SpentService);
-
-    angular.bootstrap(document, ["myApp"]);
-
-    return app;
+    return angularAMD.bootstrap(app);
 });

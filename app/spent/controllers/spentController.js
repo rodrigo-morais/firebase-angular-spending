@@ -1,4 +1,7 @@
-﻿class SpentController {
+﻿import app from 'app';
+import { SpentService } from "spent/services/spentService";
+
+class SpentController {
     constructor(spentService){
         this._service = spentService;
         this.date = '';
@@ -12,5 +15,9 @@
 }
 
 SpentController.$inject = ['spentService'];
+
+app
+    .controller('spentController', SpentController)
+    .service('spentService', SpentService);
 
 export { SpentController };

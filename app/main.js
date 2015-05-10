@@ -7,6 +7,7 @@ requirejs.config({
         'angular-sanitize': '../vendor/angular-sanitize/angular-sanitize',
         'angular-resource': '../vendor/angular-resource/angular-resource',
         'angular-route': '../vendor/angular-route/angular-route',
+        'angularAMD': '../vendor/angularAMD/angularAMD',
         'angular-css': '../vendor/angular-css/angular-css',
         'bootstrap': '../vendor/bootstrap/dist/js/bootstrap.min'
     },
@@ -19,6 +20,7 @@ requirejs.config({
             exports: "angular-route",
             deps: ["angular"]
         },
+        'angularAMD': ['angular'],
         'bootstrap':
         {
             deps: ["jquery"]

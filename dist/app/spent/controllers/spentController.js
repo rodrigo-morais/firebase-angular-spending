@@ -1,5 +1,7 @@
-define(["exports"], function (exports) {
+define(["exports", "app", "spent/services/spentService"], function (exports, _app, _spentServicesSpentService) {
     "use strict";
+
+    var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
     var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -8,6 +10,10 @@ define(["exports"], function (exports) {
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
+
+    var app = _interopRequire(_app);
+
+    var SpentService = _spentServicesSpentService.SpentService;
 
     var SpentController = (function () {
         function SpentController(spentService) {
@@ -31,6 +37,8 @@ define(["exports"], function (exports) {
     })();
 
     SpentController.$inject = ["spentService"];
+
+    app.controller("spentController", SpentController).service("spentService", SpentService);
 
     exports.SpentController = SpentController;
 });
