@@ -1,4 +1,4 @@
-define(["exports", "app", "spent/services/spentService"], function (exports, _app, _spentServicesSpentService) {
+define(["exports", "app", "spent/services/spentService", "moment"], function (exports, _app, _spentServicesSpentService, _moment) {
     "use strict";
 
     var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -15,6 +15,8 @@ define(["exports", "app", "spent/services/spentService"], function (exports, _ap
 
     var SpentService = _spentServicesSpentService.SpentService;
 
+    var moment = _interopRequire(_moment);
+
     var SpentController = (function () {
         function SpentController(spentService) {
             _classCallCheck(this, SpentController);
@@ -28,6 +30,7 @@ define(["exports", "app", "spent/services/spentService"], function (exports, _ap
         _createClass(SpentController, {
             saveSpent: {
                 value: function saveSpent() {
+                    this.date = moment(this.date).format("YYYY-MM-DD");
                     this._service.post(this.date, this.item, this.value);
                 }
             }

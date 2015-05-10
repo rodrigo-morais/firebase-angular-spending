@@ -4,8 +4,10 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
 import angularAMD from 'angularAMD';
+import firebase from 'firebase';
+import angularfire from 'angularfire';
 
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'firebase']);
 
 app.config([
   '$routeProvider',

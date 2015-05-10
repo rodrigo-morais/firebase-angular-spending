@@ -1,6 +1,6 @@
 ﻿let config = (() => {
     return{
-        url: 'YOUR URL'
+        url: 'https://lgwv0cscs30.firebaseio.com/spending'
     };
 })();
 

@@ -1,4 +1,4 @@
-define(["exports", "angular", "angular-route", "angularAMD"], function (exports, _angular, _angularRoute, _angularAMD) {
+define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angularfire"], function (exports, _angular, _angularRoute, _angularAMD, _firebase, _angularfire) {
     /*jslint browser:true */
     "use strict";
 
@@ -10,7 +10,11 @@ define(["exports", "angular", "angular-route", "angularAMD"], function (exports,
 
     var angularAMD = _interopRequire(_angularAMD);
 
-    var app = angular.module("myApp", ["ngRoute"]);
+    var firebase = _interopRequire(_firebase);
+
+    var angularfire = _interopRequire(_angularfire);
+
+    var app = angular.module("myApp", ["ngRoute", "firebase"]);
 
     app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
         $routeProvider.when("/spent", angularAMD.route({

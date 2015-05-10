@@ -1,5 +1,6 @@
 ﻿import app from 'app';
 import { SpentService } from "spent/services/spentService";
+import moment from 'moment';
 
 class SpentController {
     constructor(spentService){
@@ -10,6 +11,7 @@ class SpentController {
     }
 
     saveSpent(){
+        this.date = moment(this.date).format('YYYY-MM-DD');
         this._service.post(this.date, this.item, this.value);
     }
 }

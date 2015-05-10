@@ -9,7 +9,10 @@ requirejs.config({
         'angular-route': '../vendor/angular-route/angular-route',
         'angularAMD': '../vendor/angularAMD/angularAMD',
         'angular-css': '../vendor/angular-css/angular-css',
-        'bootstrap': '../vendor/bootstrap/dist/js/bootstrap.min'
+        'bootstrap': '../vendor/bootstrap/dist/js/bootstrap.min',
+        'firebase': '../vendor/firebase/firebase',
+        'angularfire': '../vendor/angularfire/dist/angularfire.min',
+        'moment': '../vendor/moment/moment'
     },
     "shim": {
         'angular': {
@@ -24,7 +27,11 @@ requirejs.config({
         'bootstrap':
         {
             deps: ["jquery"]
-        }
+        },
+        'firebase': {
+            exports: "firebase"
+        },
+        'angularfire': ['angular']
     },
     deps: ["app"]
 });
