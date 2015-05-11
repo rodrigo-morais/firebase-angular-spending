@@ -5,10 +5,14 @@ import moment from 'moment';
 class DailyController {
     constructor(dailyService){
         this._service = dailyService;
-        this.dateFilter = new Date(Date.now());
+        this.filter = {
+            date: new Date(Date.now())
+        };
+        this.dateFilter = moment(new Date(Date.now())).format('MM-DD-YYYY');
     }
 
-    findSpendings(){
+    findSpendings(filter){
+        this.dateFilter = moment(filter.date).format('MM-DD-YYYY');
         console.log(moment(this.dateFilter).format('MM-DD-YYYY'));
     }
 }
