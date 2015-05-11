@@ -25,14 +25,22 @@ define(["exports", "app", "daily/services/dailyService", "moment"], function (ex
             this.filter = {
                 date: new Date(Date.now())
             };
-            this.dateFilter = moment(new Date(Date.now())).format("MM-DD-YYYY");
+            this.dateFilter = moment(new Date(Date.now())).format("YYYY-MM-DD");
+            this.spendings = [];
         }
 
         _createClass(DailyController, {
             findSpendings: {
                 value: function findSpendings(filter) {
-                    this.dateFilter = moment(filter.date).format("MM-DD-YYYY");
-                    console.log(moment(this.dateFilter).format("MM-DD-YYYY"));
+                    this.dateFilter = moment(filter.date).format("YYYY-MM-DD");
+
+                    this.spendings = this._service.get(this.dateFilter);
+
+                    this.spendings.$loaded().then(function (x) {
+                        console.log(x.length); // true
+                    })["catch"](function (error) {
+                        console.log("Error:", error);
+                    });
                 }
             }
         });
