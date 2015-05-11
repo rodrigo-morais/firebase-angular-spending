@@ -11,14 +11,11 @@ define(["exports", "../../config"], function (exports, _config) {
 
     var config = _interopRequire(_config);
 
-    var DailyService = function DailyService($firebaseArray) {
+    var DailyService = function DailyService() {
         _classCallCheck(this, DailyService);
 
-        this._firebaseArray = $firebaseArray;
         this._config = config;
     };
-
-    DailyService.$inject = ["$firebaseArray"];
 
     exports.DailyService = DailyService;
 });

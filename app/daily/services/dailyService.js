@@ -2,12 +2,9 @@
 
 class DailyService {
 
-    constructor($firebaseArray){
-        this._firebaseArray = $firebaseArray;
+    constructor(){
         this._config = config;
     }
 }
-
-DailyService.$inject = ['$firebaseArray'];
 
 export { DailyService };
