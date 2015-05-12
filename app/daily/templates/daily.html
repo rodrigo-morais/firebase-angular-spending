@@ -6,3 +6,22 @@
         <button class="btn btn-primary col-md-4" data-ng:click="vm.findSpendings(vm.filter)">Find</button>
     </form>
 </div>
+
+<div class="panel panel-primary col-md-10 col-md-offset-1 per-day">
+    <div class="panel-heading">List of spendings per day</div>
+    <div class="panel-body">
+        <div id="daily">
+            <ul>
+                <li data-ng:repeat="day in vm.spendings">
+                    <span class="label">Date:</span><span class="value">{{::day.date}}</span>
+                    <span class="label">Item:</span><span class="value">{{::day.item}}</span>
+                    <span class="label">Value:</span><span class="value">{{::day.value}}</span>'
+                </li>
+            </ul>
+        </div>
+        <div class="total">
+            <label>Total:</label>
+            <span>{{::vm.total}}</span>
+        </div>
+    </div>
+</div>

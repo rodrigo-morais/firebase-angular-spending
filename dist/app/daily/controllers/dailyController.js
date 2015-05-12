@@ -27,6 +27,7 @@ define(["exports", "app", "daily/services/dailyService", "moment"], function (ex
             };
             this.dateFilter = moment(new Date(Date.now())).format("YYYY-MM-DD");
             this.spendings = [];
+            this.total = 0;
         }
 
         _createClass(DailyController, {

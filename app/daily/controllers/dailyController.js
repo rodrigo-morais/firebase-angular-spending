@@ -10,6 +10,7 @@ class DailyController {
         };
         this.dateFilter = moment(new Date(Date.now())).format('YYYY-MM-DD');
         this.spendings = [];
+        this.total = 0;
     }
 
     findSpendings(filter){
