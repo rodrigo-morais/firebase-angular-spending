@@ -16,11 +16,12 @@ main
 
 .panel
 {
-    height: 75%;
-    margin-top: 4%;
+    height: 50%;
+    margin-top: 10%;
 }
 
-.daily-filter
+.daily-filter,
+.monthly-filter
 {
     margin-top: 2%;
 }
@@ -38,7 +39,9 @@ main
 
 .per-day
 {
-    max-height: 75.5vh
+    max-height: 75.5vh;
+    height: 75%;
+    margin-top: 4%;
 }
 
 #daily ul li
