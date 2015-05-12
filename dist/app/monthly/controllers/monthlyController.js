@@ -47,12 +47,16 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
         _createClass(MonthlyController, {
             findSpendings: {
                 value: function findSpendings(filter) {
-                    var start = undefined,
-                        end = undefined;
+                    var start = moment(new Date(filter.year.name, parseInt(filter.month) - 1, 1)).format("YYYY-MM-DD"),
+                        end = moment(new Date(filter.year.name, filter.month, 0)).format("YYYY-MM-DD");
 
-                    this.monthFilter = moment(filter.month).format("MM");
+                    this.spendings = this._service.get(start, end);
 
-                    console.log(this.monthFilter);
+                    this.spendings.$loaded().then(function (_spendings) {
+                        console.log(_spendings.length);
+                    })["catch"](function (error) {
+                        console.log("Error:", error);
+                    });
                 }
             }
         });
