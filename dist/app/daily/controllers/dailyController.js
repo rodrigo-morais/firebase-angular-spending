@@ -33,12 +33,22 @@ define(["exports", "app", "daily/services/dailyService", "moment"], function (ex
         _createClass(DailyController, {
             findSpendings: {
                 value: function findSpendings(filter) {
+                    var scope = this;
+
                     this.dateFilter = moment(filter.date).format("YYYY-MM-DD");
 
                     this.spendings = this._service.get(this.dateFilter);
 
-                    this.spendings.$loaded().then(function (x) {
-                        console.log(x.length); // true
+                    this.spendings.$loaded().then(function (_spendings) {
+                        var values = _spendings.map(function (spent) {
+                            return parseFloat(spent.value);
+                        });
+
+                        scope.total = values.reduce(function (previousValue, currentValue, index, array) {
+                            return previousValue + currentValue;
+                        });
+
+                        scope.total = parseFloat(scope.total).toFixed(2);
                     })["catch"](function (error) {
                         console.log("Error:", error);
                     });
