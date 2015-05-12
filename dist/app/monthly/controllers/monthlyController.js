@@ -22,15 +22,34 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
             _classCallCheck(this, MonthlyController);
 
             this._service = monthlyService;
+
+            var _year = null;
+
+            var _years = [];
+            for (var year = 1999; year <= 2030; year = year + 1) {
+                _years.push({
+                    name: year
+                });
+                if (year === new Date(Date.now()).getFullYear()) {
+                    _year = _years[_years.length - 1];
+                }
+            }
+
             this.filter = {
-                month: new Date(Date.now())
+                month: new Date(Date.now()).getMonth() + 1,
+                year: _year,
+                years: _years
             };
+
             this.monthFilter = moment(new Date(Date.now())).format("MM");
         }
 
         _createClass(MonthlyController, {
             findSpendings: {
                 value: function findSpendings(filter) {
+                    var start = undefined,
+                        end = undefined;
+
                     this.monthFilter = moment(filter.month).format("MM");
 
                     console.log(this.monthFilter);
