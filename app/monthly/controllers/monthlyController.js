@@ -29,17 +29,48 @@ class MonthlyController {
 
         this.monthFilter = moment(new Date(Date.now())).format('MM');
 
+        this.months = [];
+
+    }
+
+    _calculateMonths(spendings){
+        for(let index = 0; index < spendings.length; index = index + 1){
+            let spent = spendings[index],
+                year = new Date(spent.date).getFullYear(),
+                numMonth = new Date(spent.date).getMonth() + 1,
+                month = this.months.filter((_month) => {
+                    return _month.year === year && _month.month === numMonth;
+                });
+
+                if(month.length > 0){
+                    month[0].value = month[0].value + parseFloat(spent.value);
+                }
+                else{
+                    month = {
+                        year: year,
+                        month: numMonth,
+                        monthName: moment(new Date(spent.date)).format('MMMM'),
+                        days: new Date(year, numMonth, 0).getDate(),
+                        value: parseFloat(spent.value)
+                    };
+
+                    this.months.push(month);
+                }
+        }
     }
 
     findSpendings(filter){
-        let start = moment(new Date(filter.year.name, parseInt(filter.month) - 1, 1)).format('YYYY-MM-DD'),
-            end = moment(new Date(filter.year.name, filter.month, 0)).format('YYYY-MM-DD');
+        let start = moment(new Date(filter.year.name, 0, 1)).format('YYYY-MM-DD'),
+            end = moment(new Date(filter.year.name, 12, 0)).format('YYYY-MM-DD'),
+            scope = this;
 
         this.spendings = this._service.get(start, end);
 
         this.spendings.$loaded()
           .then(function(_spendings) {
-              console.log(_spendings.length);
+              scope._calculateMonths(_spendings);
+
+              let i = scope.months.length;
           })
           .catch(function(error) {
               console.log("Error:", error);
