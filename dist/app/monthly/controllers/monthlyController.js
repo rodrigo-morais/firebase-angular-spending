@@ -83,6 +83,7 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
                         end = moment(new Date(filter.year.name, 12, 0)).format("YYYY-MM-DD"),
                         scope = this;
 
+                    this.months = [];
                     this.spendings = this._service.get(start, end);
 
                     this.spendings.$loaded().then(function (_spendings) {
