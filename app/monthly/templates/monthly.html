@@ -7,3 +7,20 @@
         <button class="btn btn-primary col-md-4" data-ng:click="vm.findSpendings(vm.filter)">Find</button>
     </form>
 </div>
+
+<div class="panel panel-primary col-md-12 per-month">
+    <div class="panel-heading">List of spendings per month</div>
+    <div class="panel-body">
+        <div id="monthly">
+            <ul class="months" data-ng:repeat="month in vm.months">
+                <span class="label">Period:</span><span class="value">{{month.monthName}} / {{month.year}}</span>
+                <span class="label">Total:</span><span class="value"> ${{month.value}}</span>
+                <span class="label">Average:</span><span class="value"> ${{month.average}}</span>
+            </ul>
+        </div>
+        <div class="total">
+            <label>Total:</label><span id="total"></span>
+            <label>Average:</label><span id="average"></span>
+        </div>
+    </div>
+</div>

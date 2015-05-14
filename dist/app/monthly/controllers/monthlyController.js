@@ -62,13 +62,15 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
 
                             if (month.length > 0) {
                                 month[0].value = month[0].value + parseFloat(spent.value);
+                                month[0].average = (month[0].value / month[0].days).toFixed(2);
                             } else {
                                 month = {
                                     year: year,
                                     month: numMonth,
                                     monthName: moment(new Date(spent.date)).format("MMMM"),
                                     days: new Date(year, numMonth, 0).getDate(),
-                                    value: parseFloat(spent.value)
+                                    value: parseFloat(spent.value),
+                                    average: (parseFloat(spent.value) / new Date(year, numMonth, 0).getDate()).toFixed(2)
                                 };
 
                                 _this.months.push(month);
