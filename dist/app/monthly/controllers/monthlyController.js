@@ -36,12 +36,9 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
             }
 
             this.filter = {
-                month: new Date(Date.now()).getMonth() + 1,
                 year: _year,
                 years: _years
             };
-
-            this.monthFilter = moment(new Date(Date.now())).format("MM");
 
             this.months = [];
         }
