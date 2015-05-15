@@ -79,3 +79,51 @@ main
     margin: 0 2% 0 5%;
     font-size: 1.4em;
 }
+
+#monthly
+{
+    max-height: 28vh;
+    overflow: hidden;
+}
+
+.per-month
+{
+    max-height: 75.5vh;
+    height: 75%;
+    margin-top: 4%;
+}
+
+.per-month .total
+{
+    float: left;
+    bottom: 3%;
+    width: 90%;
+    position: absolute;
+}
+
+#monthly ul
+{
+    list-style: none;
+}
+
+#monthly ul li
+{
+    float: left;
+    clear: both;
+    width: 100%;
+}
+
+#monthly ul li span
+{
+    margin-right: 4px;
+    width: 15%;
+    float: left;
+}
+
+#monthly ul li span.label
+{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000000;
+    width: 10%;
+}
