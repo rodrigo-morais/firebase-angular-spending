@@ -41,6 +41,8 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
             };
 
             this.months = [];
+            this.total = 0;
+            this.average = 0;
 
             this.findSpendings(this.filter);
         }
@@ -78,6 +80,29 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
                     }
                 }
             },
+            _calculateTotalByYear: {
+                value: function _calculateTotalByYear(year) {
+                    var months = this.months.map(function (month) {
+                        return parseFloat(month.value);
+                    });
+
+                    var totals = {
+                        total: 0,
+                        months: this.months.length,
+                        average: 0
+                    };
+
+                    if (months.length > 0) {
+                        totals.total = months.reduce(function (previousValue, currentValue, index, array) {
+                            return previousValue + currentValue;
+                        });
+
+                        totals.average = totals.total / totals.months;
+                    }
+
+                    return totals;
+                }
+            },
             findSpendings: {
                 value: function findSpendings(filter) {
                     var start = moment(new Date(filter.year.name, 0, 1)).format("YYYY-MM-DD"),
@@ -90,7 +115,9 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
                     this.spendings.$loaded().then(function (_spendings) {
                         scope._calculateMonths(_spendings);
 
-                        var i = scope.months.length;
+                        var totals = scope._calculateTotalByYear(filter.year.name);
+                        scope.total = totals.total;
+                        scope.average = totals.average;
                     })["catch"](function (error) {
                         console.log("Error:", error);
                     });

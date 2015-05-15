@@ -27,6 +27,8 @@ class MonthlyController {
         };
 
         this.months = [];
+        this.total = 0;
+        this.average = 0;
 
         this.findSpendings(this.filter);
 
@@ -60,6 +62,28 @@ class MonthlyController {
         }
     }
 
+    _calculateTotalByYear(year){
+        let months = this.months.map(function(month) {
+            return parseFloat(month.value);
+        });
+
+        let totals = {
+            total: 0,
+            months: this.months.length,
+            average: 0
+        };
+
+        if(months.length > 0){
+            totals.total = months.reduce(function(previousValue, currentValue, index, array) {
+                return previousValue + currentValue;
+            });
+
+            totals.average = totals.total / totals.months;
+        }
+
+        return totals;
+    }
+
     findSpendings(filter){
         let start = moment(new Date(filter.year.name, 0, 1)).format('YYYY-MM-DD'),
             end = moment(new Date(filter.year.name, 12, 0)).format('YYYY-MM-DD'),
@@ -72,7 +96,9 @@ class MonthlyController {
           .then(function(_spendings) {
               scope._calculateMonths(_spendings);
 
-              let i = scope.months.length;
+              let totals = scope._calculateTotalByYear(filter.year.name);
+              scope.total = totals.total;
+              scope.average = totals.average;
           })
           .catch(function(error) {
               console.log("Error:", error);
