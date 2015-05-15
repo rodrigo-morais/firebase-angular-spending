@@ -41,6 +41,8 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
             };
 
             this.months = [];
+
+            this.findSpendings(this.filter);
         }
 
         _createClass(MonthlyController, {

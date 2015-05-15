@@ -28,6 +28,8 @@ class MonthlyController {
 
         this.months = [];
 
+        this.findSpendings(this.filter);
+
     }
 
     _calculateMonths(spendings){
