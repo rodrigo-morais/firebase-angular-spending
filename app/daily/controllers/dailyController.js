@@ -31,7 +31,7 @@ class DailyController {
                   return previousValue + currentValue;
               });
 
-              scope.total = parseFloat(scope.total).toFixed(2);
+              scope.total = parseFloat(scope.total);
           })
           .catch(function(error) {
               console.log("Error:", error);

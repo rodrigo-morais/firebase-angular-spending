@@ -15,14 +15,14 @@
             <ul>
                 <li data-ng:repeat="month in vm.months">
                     <span class="label">Period:</span><span class="value">{{::month.monthName}} / {{::month.year}}</span>
-                    <span class="label">Total:</span><span class="value"> ${{::month.value}}</span>
-                    <span class="label">Average:</span><span class="value"> ${{::month.average}}</span>
+                    <span class="label">Total:</span><span class="value"> ${{::month.value | number:2}}</span>
+                    <span class="label">Average:</span><span class="value"> ${{::month.average | number:2}}</span>
                 </li>
             </ul>
         </div>
         <div class="total">
-            <label>Total:</label><span id="total">{{vm.total}}</span>
-            <label>Average:</label><span id="average">{{vm.average}}</span>
+            <label>Total:</label><span id="total">{{vm.total | number:2}}</span>
+            <label>Average:</label><span id="average">{{vm.average | number:2}}</span>
         </div>
     </div>
 </div>

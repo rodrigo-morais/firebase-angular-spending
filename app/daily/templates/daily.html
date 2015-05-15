@@ -15,13 +15,13 @@
                 <li data-ng:repeat="day in vm.spendings">
                     <span class="label">Date:</span><span class="value">{{::day.date}}</span>
                     <span class="label">Item:</span><span class="value">{{::day.item}}</span>
-                    <span class="label">Value:</span><span class="value">{{::day.value}}</span>
+                    <span class="label">Value:</span><span class="value">{{::day.value | number:2}}</span>
                 </li>
             </ul>
         </div>
         <div class="total">
             <label>Total:</label>
-            <span>{{vm.total}}</span>
+            <span>{{vm.total | number:2}}</span>
         </div>
     </div>
 </div>

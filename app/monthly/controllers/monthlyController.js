@@ -45,7 +45,7 @@ class MonthlyController {
 
                 if(month.length > 0){
                     month[0].value = month[0].value + parseFloat(spent.value);
-                    month[0].average = (month[0].value / month[0].days).toFixed(2);
+                    month[0].average = (month[0].value / month[0].days);
                 }
                 else{
                     month = {
@@ -54,7 +54,7 @@ class MonthlyController {
                         monthName: moment(new Date(spent.date)).format('MMMM'),
                         days: new Date(year, numMonth, 0).getDate(),
                         value: parseFloat(spent.value),
-                        average: (parseFloat(spent.value) / new Date(year, numMonth, 0).getDate()).toFixed(2)
+                        average: (parseFloat(spent.value) / new Date(year, numMonth, 0).getDate())
                     };
 
                     this.months.push(month);
