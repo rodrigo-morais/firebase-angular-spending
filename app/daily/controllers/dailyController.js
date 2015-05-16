@@ -11,6 +11,8 @@ class DailyController {
         this.dateFilter = moment(new Date(Date.now())).format('YYYY-MM-DD');
         this.spendings = [];
         this.total = 0;
+
+        this.findSpendings(this.filter);
     }
 
     findSpendings(filter){
