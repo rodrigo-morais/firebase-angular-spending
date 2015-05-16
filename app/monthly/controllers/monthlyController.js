@@ -3,7 +3,7 @@ import { MonthlyService } from "monthly/services/monthlyService";
 import moment from 'moment';
 
 class MonthlyController {
-    constructor(monthlyService){
+    constructor($rootScope, monthlyService){
         this._service = monthlyService;
 
         let _year = null;
@@ -31,6 +31,8 @@ class MonthlyController {
         this.average = 0;
 
         this.findSpendings(this.filter);
+
+        $rootScope.$broadcast('change-menu', { position: 2 });
 
     }
 
@@ -106,7 +108,7 @@ class MonthlyController {
     }
 }
 
-MonthlyController.$inject = ['monthlyService'];
+MonthlyController.$inject = ['$rootScope', 'monthlyService'];
 
 app
     .controller('monthlyController', MonthlyController)

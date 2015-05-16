@@ -18,13 +18,15 @@ define(["exports", "app", "spent/services/spentService", "moment"], function (ex
     var moment = _interopRequire(_moment);
 
     var SpentController = (function () {
-        function SpentController(spentService) {
+        function SpentController($rootScope, spentService) {
             _classCallCheck(this, SpentController);
 
             this._service = spentService;
             this.date = "";
             this.item = "";
             this.value = "";
+
+            $rootScope.$broadcast("change-menu", { position: 0 });
         }
 
         _createClass(SpentController, {
@@ -48,7 +50,7 @@ define(["exports", "app", "spent/services/spentService", "moment"], function (ex
         return SpentController;
     })();
 
-    SpentController.$inject = ["spentService"];
+    SpentController.$inject = ["$rootScope", "spentService"];
 
     app.controller("spentController", SpentController).service("spentService", SpentService);
 

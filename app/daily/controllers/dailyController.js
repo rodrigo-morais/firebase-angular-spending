@@ -3,7 +3,7 @@ import { DailyService } from "daily/services/dailyService";
 import moment from 'moment';
 
 class DailyController {
-    constructor(dailyService){
+    constructor($rootScope, dailyService){
         this._service = dailyService;
         this.filter = {
             date: new Date(Date.now())
@@ -13,6 +13,8 @@ class DailyController {
         this.total = 0;
 
         this.findSpendings(this.filter);
+
+        $rootScope.$broadcast('change-menu', { position: 1 });
     }
 
     findSpendings(filter){
@@ -41,7 +43,7 @@ class DailyController {
     }
 }
 
-DailyController.$inject = ['dailyService'];
+DailyController.$inject = ['$rootScope', 'dailyService'];
 
 app
     .controller('dailyController', DailyController)

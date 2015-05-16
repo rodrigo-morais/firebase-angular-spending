@@ -18,7 +18,7 @@ define(["exports", "app", "daily/services/dailyService", "moment"], function (ex
     var moment = _interopRequire(_moment);
 
     var DailyController = (function () {
-        function DailyController(dailyService) {
+        function DailyController($rootScope, dailyService) {
             _classCallCheck(this, DailyController);
 
             this._service = dailyService;
@@ -30,6 +30,8 @@ define(["exports", "app", "daily/services/dailyService", "moment"], function (ex
             this.total = 0;
 
             this.findSpendings(this.filter);
+
+            $rootScope.$broadcast("change-menu", { position: 1 });
         }
 
         _createClass(DailyController, {
@@ -61,7 +63,7 @@ define(["exports", "app", "daily/services/dailyService", "moment"], function (ex
         return DailyController;
     })();
 
-    DailyController.$inject = ["dailyService"];
+    DailyController.$inject = ["$rootScope", "dailyService"];
 
     app.controller("dailyController", DailyController).service("dailyService", DailyService);
 

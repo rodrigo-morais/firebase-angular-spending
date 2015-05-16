@@ -12,7 +12,10 @@ var rmMenuDirective = () => {
         replace: true,
         controller: rmMenuController,
         link: function (scope, element, attrs, controller) {
-            
+            scope.$on('change-menu', (event, args) => {
+                let menu = scope.menus[args.position];
+                scope.select(menu);
+            });
         }
     };
 };

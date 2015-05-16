@@ -15,7 +15,12 @@ define(["exports", "module", "components/menu/controllers/rmMenuController"], fu
             css: "app/components/menu/css/menu.css",
             replace: true,
             controller: rmMenuController,
-            link: function link(scope, element, attrs, controller) {}
+            link: function link(scope, element, attrs, controller) {
+                scope.$on("change-menu", function (event, args) {
+                    var menu = scope.menus[args.position];
+                    scope.select(menu);
+                });
+            }
         };
     };
 

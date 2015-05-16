@@ -3,11 +3,13 @@ import { SpentService } from "spent/services/spentService";
 import moment from 'moment';
 
 class SpentController {
-    constructor(spentService){
+    constructor($rootScope, spentService){
         this._service = spentService;
         this.date = '';
         this.item = '';
         this.value = '';
+
+        $rootScope.$broadcast('change-menu', { position: 0 });
     }
 
     _clean(){
@@ -24,7 +26,7 @@ class SpentController {
     }
 }
 
-SpentController.$inject = ['spentService'];
+SpentController.$inject = ['$rootScope', 'spentService'];
 
 app
     .controller('spentController', SpentController)

@@ -18,7 +18,7 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
     var moment = _interopRequire(_moment);
 
     var MonthlyController = (function () {
-        function MonthlyController(monthlyService) {
+        function MonthlyController($rootScope, monthlyService) {
             _classCallCheck(this, MonthlyController);
 
             this._service = monthlyService;
@@ -45,6 +45,8 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
             this.average = 0;
 
             this.findSpendings(this.filter);
+
+            $rootScope.$broadcast("change-menu", { position: 2 });
         }
 
         _createClass(MonthlyController, {
@@ -128,7 +130,7 @@ define(["exports", "app", "monthly/services/monthlyService", "moment"], function
         return MonthlyController;
     })();
 
-    MonthlyController.$inject = ["monthlyService"];
+    MonthlyController.$inject = ["$rootScope", "monthlyService"];
 
     app.controller("monthlyController", MonthlyController).service("monthlyService", MonthlyService);
 
