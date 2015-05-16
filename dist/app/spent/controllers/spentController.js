@@ -28,10 +28,19 @@ define(["exports", "app", "spent/services/spentService", "moment"], function (ex
         }
 
         _createClass(SpentController, {
+            _clean: {
+                value: function _clean() {
+                    this.date = "";
+                    this.item = "";
+                    this.value = "";
+                }
+            },
             saveSpent: {
                 value: function saveSpent() {
                     this.date = moment(this.date).format("YYYY-MM-DD");
                     this._service.post(this.date, this.item, this.value);
+
+                    this._clean();
                 }
             }
         });
