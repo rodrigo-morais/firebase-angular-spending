@@ -3,11 +3,11 @@ define(["exports", "module"], function (exports, module) {
 
     var rmMenuController = function ($scope) {
         $scope.menus = [{
-            text: "Add Spent",
+            text: "Add Spent - 1",
             link: "/#spent",
             selected: true
         }, {
-            text: "Daily Spendings",
+            text: "Daily Spendings - 2",
             link: "/#daily",
             selected: false
         }, {

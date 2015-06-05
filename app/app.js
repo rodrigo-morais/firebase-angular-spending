@@ -6,10 +6,11 @@ import ngRoute from 'angular-route';
 import angularAMD from 'angularAMD';
 import firebase from 'firebase';
 import angularfire from 'angularfire';
-import rmMenuDirective from "components/menu/directives/rmMenuDirective";
+import rmMenuController from "menu/controllers/rmMenuController";
 import angularCss from 'angularCSS';
+import rmRightMenu from 'angularRightMenu';
 
-var app = angular.module('myApp', ['ngRoute', 'firebase','door3.css']);
+var app = angular.module('myApp', ['ngRoute', 'firebase','door3.css', 'rmRightMenu']);
 
 app.config([
   '$routeProvider',
@@ -47,6 +48,6 @@ app.config([
    }
 ]);
 
-app.directive('rmMenu', [rmMenuDirective]);
+app.controller('menuController', rmMenuController);
 
 return angularAMD.bootstrap(app);

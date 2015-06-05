@@ -1,4 +1,4 @@
-define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angularfire", "components/menu/directives/rmMenuDirective", "angularCSS"], function (exports, _angular, _angularRoute, _angularAMD, _firebase, _angularfire, _componentsMenuDirectivesRmMenuDirective, _angularCSS) {
+define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angularfire", "menu/controllers/rmMenuController", "angularCSS", "angularRightMenu"], function (exports, _angular, _angularRoute, _angularAMD, _firebase, _angularfire, _menuControllersRmMenuController, _angularCSS, _angularRightMenu) {
     /*jslint browser:true */
     "use strict";
 
@@ -14,11 +14,13 @@ define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angula
 
     var angularfire = _interopRequire(_angularfire);
 
-    var rmMenuDirective = _interopRequire(_componentsMenuDirectivesRmMenuDirective);
+    var rmMenuController = _interopRequire(_menuControllersRmMenuController);
 
     var angularCss = _interopRequire(_angularCSS);
 
-    var app = angular.module("myApp", ["ngRoute", "firebase", "door3.css"]);
+    var rmRightMenu = _interopRequire(_angularRightMenu);
+
+    var app = angular.module("myApp", ["ngRoute", "firebase", "door3.css", "rmRightMenu"]);
 
     app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
         $routeProvider.when("/spent", angularAMD.route({
@@ -48,7 +50,7 @@ define(["exports", "angular", "angular-route", "angularAMD", "firebase", "angula
         });*/
     }]);
 
-    app.directive("rmMenu", [rmMenuDirective]);
+    app.controller("menuController", rmMenuController);
 
     return angularAMD.bootstrap(app);
 });

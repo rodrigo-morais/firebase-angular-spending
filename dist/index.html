@@ -3,9 +3,9 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.min.css">
     </head>
-    <body data-ng-cloak>
+    <body data-ng-cloak data-ng:controller="menuController">
         <main ng-view></main>
-        <rm-menu></rm-menu>
+        <rm-menu data-items="menus"></rm-menu>
         
         <script data-main="app/main.js"
             src="vendor/requirejs/require.js"

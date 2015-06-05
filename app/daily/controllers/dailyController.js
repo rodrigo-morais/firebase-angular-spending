@@ -30,10 +30,14 @@ class DailyController {
                   return parseFloat(spent.value);
               });
 
-
-              scope.total = values.reduce(function(previousValue, currentValue, index, array) {
-                  return previousValue + currentValue;
-              });
+              if(values.length > 0){
+                scope.total = values.reduce(function(previousValue, currentValue, index, array) {
+                    return previousValue + currentValue;
+                });
+              }
+              else{
+                scope.total = 0;
+              }
 
               scope.total = parseFloat(scope.total);
           })

@@ -12,7 +12,8 @@ requirejs.config({
         'bootstrap': '../vendor/bootstrap/dist/js/bootstrap.min',
         'firebase': '../vendor/firebase/firebase',
         'angularfire': '../vendor/angularfire/dist/angularfire.min',
-        'moment': '../vendor/moment/moment'
+        'moment': '../vendor/moment/moment',
+        'angularRightMenu': '../vendor/angular-right-menu/dist/angular-right-menu'
     },
     "shim": {
         'angular': {
@@ -35,7 +36,10 @@ requirejs.config({
         'firebase': {
             exports: "firebase"
         },
-        'angularfire': ['angular']
+        'angularfire': ['angular'],
+        'angularRightMenu': {
+            deps: ["angular"]  
+        }
     },
     deps: ["app"]
 });
